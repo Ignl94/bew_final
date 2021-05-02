@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 <!----->
 {% block content %}
-<div>
+<div class="home-div">
   <h1>Restaurant Site</h1>
   <p>
     Welcome to my restaurant site. Login or Signup to view, create and leave
     reviews for your favorite restaurants.
   </p>
 </div>
-<div>
+<div class="home-div">
   {% for restaurant in restaurants %}
   <h2>Restaurant: {{ restaurant.name }}</h2>
   <p>Address: {{ restaurant.address }}</p>
-  <p>Signature Dish: {{ restaurant.signature_dish }}</p>
 
   {% endfor %}
+</div>
+<div class="home-div">
+  <ul>
+    <li><a href="{{ url_for('restaurant') }}">Restaurant Form</a></li>
+    <li><a href="{{ url_for('review') }}">Review Form</a></li>
+    <li><a href="{{ url_for('about')}}">About Page</a></li>
+  </ul>
 </div>
 
 {% endblock content %}

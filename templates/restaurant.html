@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<form action="/restaurant" method="POST">
+  <fieldset>
+    {{ form.csrf_token }}
+    <legend>Build your Restaurant</legend>
+    {{ form.name.label }}
+    <!---->
+    {{ form.name }}
+    <ul>
+      {% for error in form.name.errors %}
+      <li class="error">{{error}}</li>
+      {% endfor %}
+    </ul>
+    {{ form.address.label }}
+    <!---->
+    {{ form.address }}
+    <ul>
+      {% for error in form.address.errors %}
+      <li class="error">{{error}}</li>
+      {% endfor %}
+    </ul>
+    {{ form.submit }}
+  </fieldset>
+</form>
+
+{% endblock content %}
