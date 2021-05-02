@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!----->
+{% block content %}
+<div>
+  <h1>Restaurant Site</h1>
+  <p>
+    Welcome to my restaurant site. Login or Signup to view, create and leave
+    reviews for your favorite restaurants.
+  </p>
+</div>
+<div>
+  {% for restaurant in restaurants %}
+  <h2>Restaurant: {{ restaurant.name }}</h2>
+  <p>Address: {{ restaurant.address }}</p>
+  <p>Signature Dish: {{ restaurant.signature_dish }}</p>
+
+  {% endfor %}
+</div>
+
+{% endblock content %}
