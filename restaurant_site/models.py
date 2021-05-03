@@ -1,4 +1,4 @@
-from __main__ import db
+from restaurant_site import db
 
 
 class User(db.Model):
