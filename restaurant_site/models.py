@@ -13,6 +13,12 @@ class Restaurant(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20), nullable=False, unique=True)
     address = db.Column(db.String(50), nullable=False, unique=True)
+    reviews = db.relationship('Reviews')
 
     def __repr__(self):
         return f"User('{self.name}', {self.address}')"
+
+class Reviews(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    review = db.Column(db.String, nullable=False)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurant.id'))
