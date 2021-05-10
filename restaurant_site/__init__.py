@@ -13,5 +13,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8675ignl1'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 db = SQLAlchemy(app)
+with app.app_context():
+    db.create_all()
 
 from restaurant_site import routes
