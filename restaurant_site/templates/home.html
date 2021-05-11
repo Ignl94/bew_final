@@ -16,6 +16,12 @@
   {% endfor %}
 </div>
 <div class="home-div">
+  {% for review in reviews %}
+  <p>{{ review.review }}</p>
+  <hr />
+  {% endfor %}
+</div>
+<div class="home-div">
   <ul>
     <li><a href="{{ url_for('restaurant') }}">Restaurant Form</a></li>
     <li><a href="{{ url_for('review') }}">Review Form</a></li>

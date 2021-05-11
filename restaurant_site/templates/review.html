@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+
+<form action="/review" method="POST">
+  <fieldset>
+    {{ form.csrf_token }}
+    <legend>Write your review.</legend>
+    {{ form.review.label }}
+    <!---->
+    {{ form.review }}
+    <ul>
+      {% for error in form.review.errors %}
+      <li class="error">{{error}}</li>
+      {% endfor %}
+    </ul>
+    {{ form.restaurant.label }}
+    <!---->
+    {{ form.restaurant }}
+    <ul>
+      {% for error in form.restaurant.errors %}
+      <li class="error">{{error}}</li>
+      {% endfor %}
+    </ul>
+    {{ form.submit }}
+  </fieldset>
+</form>
+{% endblock content %}

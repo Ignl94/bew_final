@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FloatField, TextField, PasswordField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Length
-from restaurant_site.models import Restaurant
+from wtforms.validators import DataRequired, Length, ValidationError
+from restaurant_site.models import Restaurant, User
 
 
 
@@ -11,6 +11,11 @@ class SignupForm(FlaskForm):
     username = StringField('Enter Username', validators=[DataRequired(), Length(min=3,max=20)])
     password = StringField('Enter Password', validators=[DataRequired(), Length(min=3,max=50)])
     submit = SubmitField('Signup')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError("User already exists")
 
 
 class LoginForm(FlaskForm):
