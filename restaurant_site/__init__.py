@@ -20,4 +20,5 @@ login_manager.login_view = 'login'
 from restaurant_site import routes
 
 with app.app_context():
+    db.drop_all()
     db.create_all()

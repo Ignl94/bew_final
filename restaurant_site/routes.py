@@ -20,7 +20,8 @@ def home():
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        print(f' ---------------- {hashed_password}---------------------------')
         user = User(username=form.username.data, password= hashed_password)
         db.session.add(user)
         db.session.commit()
